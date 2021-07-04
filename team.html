@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My page title</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+        <script defer src="js/script.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <div class="logo-section">
+                <a href="index.html"><img src="images/pineapple_bun.png"/></a>
+                <p>Hello! St. Kitts and Nevis</p>
+                <form>
+                    <input type="search" name="search" placeholder="Search"/>
+                    <input type="submit" value="search" class="material-icons"/>
+                </form>
+                <p>
+                    <a href="mailto:ivan.chiou@nevisrelaymarathon.com">Contact Me<span class="material-icons">mail</span>
+                    </a>
+                </p>
+            </div>
+        </header>
+        <nav>
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li onmouseover="mouseover_on_nav_item(this)" onmouseout="mouseout_on_nav_item(this)">
+                    <a href="team.html">Our team</a>
+                    <div class="nav-submenu" onmouseover="mouseover_on_nav_item(this)">
+                        <ul>
+                            <li>
+                                <span class="material-icons-outlined">person</span>
+                                <a href="#">Ivan one</a>
+                            </li>
+                            <li>
+                                <span class="material-icons-outlined">person</span>
+                                <a href="#">Ivan two</a>
+                            </li>
+                            <li>
+                                <span class="material-icons-outlined">person</span>
+                                <a href="#">Ivan three</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li onmouseover="mouseover_on_nav_item(this)" onmouseout="mouseout_on_nav_item(this)">
+                    <a href="#">Projects</a>
+                    <div class="nav-submenu" onmouseover="mouseover_on_nav_item(this)">
+                        <ul>
+                            <li>
+                                <span class="material-icons-outlined">task</span>
+                                <a href="#">Nevis Relay Marathon</a>
+                            </li>
+                            <li>
+                                <span class="material-icons-outlined">task</span>
+                                <a href="#">Free Virtual Programming Class</a>
+                            </li>
+                            <li>
+                                <span class="material-icons-outlined">task</span>
+                                <a href="project.html">EAT Local Competition</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+            </ul>
+        </nav>
+        <main>
+            <div class="main-image">
+                <img style="display: block;" src="https://loremflickr.com/1600/300?lock=719"/>
+            </div>
+            <div class="main-content">
+                <section>
+                    <h2>My team members</h2>
+                    <ul>
+                        <li>Ivan 1
+                            <img src="https://loremflickr.com/100/100?lock=1"/></li>
+                        <li>Ivan 2
+                            <img src="https://loremflickr.com/100/100?lock=2"/></li>
+                        <li>Ivan 3
+                            <img src="https://loremflickr.com/100/100?lock=3"/></li>
+                    </ul>
+                </section>
+                <aside>
+                    <h3>Today's TOP3 Team</h3>
+                    <ul>
+                        <li>Ivan 1: 2000P</li>
+                        <li>Ivan 2: 1000P</li>
+                        <li>Ivan 3: 500P</li>
+                    </ul>
+                </aside>
+            </div>
+        </main>
+        <footer>
+            <p>©Copyright 2021 by Ivan. All rights reversed.</p>
+        </footer>
+    </body>
+</html>

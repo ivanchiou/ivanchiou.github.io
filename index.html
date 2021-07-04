@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ivan's Personal Website</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+    <script defer src="js/script.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo-section">
+        <a href="index.html"><img src="images/pineapple_bun.png" /></a>
+        <p>Hello! St. Kitts and Nevis</p>
+        <form>
+            <input type="search" name="search" placeholder="Search" />
+            <input type="submit" value="search" class="material-icons" />
+            <div class="search-autocomplete display-none">
+              <ul>
+                <li>suggestion keyword</li>
+              </ul>
+            </div>            
+        </form>
+        <p><a href="mailto:ivan.chiou@nevisrelaymarathon.com">Contact Me<span class="material-icons">mail</span></a></p>
+      </div>
+    </header>
+    <nav>
+      <ul>
+        <li class="btn-main">
+          <a href="index.html">Home</a>
+        </li>
+        <li class="btn-main" onmouseover="mouseover_on_nav_item(this)" onmouseout="mouseout_on_nav_item(this)">
+          <a href="team.html">Our team</a>
+          <div class="nav-submenu" onmouseover="mouseover_on_nav_item(this)">
+            <ul>
+              <li><span class="material-icons-outlined">person</span><a href="#">Ivan one</a></li>
+              <li><span class="material-icons-outlined">person</span><a href="#">Ivan two</a></li>
+              <li><span class="material-icons-outlined">person</span><a href="#">Ivan three</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="btn-main" onmouseover="mouseover_on_nav_item(this)" onmouseout="mouseout_on_nav_item(this)">
+          <a href="#">Projects</a>
+          <div class="nav-submenu" onmouseover="mouseover_on_nav_item(this)">
+            <ul>
+              <li><span class="material-icons-outlined">task</span><a href="http://www.nevisrelaymarathon.com/">Nevis Relay Marathon</a></li>
+              <li><span class="material-icons-outlined">task</span><a href="https://opendata.foreign.gov.kn/free-virtual-programming-class/">Free Virtual Programming Class</a></li>
+              <li><span class="material-icons-outlined">task</span><a href="project.html">EAT Local Competition</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="btn-main"><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+    <main>
+        <div class="main-image slider">
+            <img src="https://loremflickr.com/1600/300/food?lock=714" class="slider-item" />
+            <img src="https://loremflickr.com/1600/300/food?lock=715" class="slider-item" />
+            <img src="https://loremflickr.com/1600/300/food?lock=716" class="slider-item" />
+            <img src="https://loremflickr.com/1600/300/food?lock=717" class="slider-item" />
+            <img src="https://loremflickr.com/1600/300/food?lock=718" class="slider-item" />
+            <button class="slider-prev" onclick="prevImage()"><</button>
+            <button class="slider-next" onclick="nextImage()">></button>
+            <button class="slider-bingo spin" onclick="bingo()">SPIN</button>
+        </div>
+        <div class="main-content">
+            <section>
+                <article>
+                    <h2>What is my background</h2>
+                    <p>
+                        My background is Computer Science. My background is Computer Science. My background is Computer Science. My background is Computer Science. My background is Computer Science.
+                    </p>
+                </article>
+                <article>
+                    <h2>Why I learn programming</h2>
+                    <p>
+                        Because I love it! Because I love it! Because I love it! Because I love it! Because I love it! Because I love it!
+                    </p>
+                </article>
+            </section>
+            <aside>
+                <h3>Today's TOP3 Teams</h3>
+                <ul>
+                    <li>Ivan 1: 2000P</li>
+                    <li>Ivan 2: 1000P</li>
+                    <li>Ivan 3: 500P</li>
+                </ul>
+            </aside>            
+        </div>
+    </main>
+    <footer>
+      <p>©Copyright 2021 by Ivan. All rights reversed.</p>
+    </footer>
+  </body>
+</html>

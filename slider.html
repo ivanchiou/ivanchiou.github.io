@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Slider Component</title>
+        <style>
+            body {
+                margin: 0;
+            }
+
+            .slider {
+                height: 300px;
+                position: relative;
+            }
+
+            .slider img {
+                width: 100%;
+                height: 300px;
+                position: absolute;
+            }
+
+            .slider .slider-prev-btn, .slider .slider-next-btn {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: transparent;
+                border: 0px;
+                color: #ffffff;
+                font-size: 40px;
+                opacity: 0.2;
+            }
+
+            .slider .slider-prev-btn {
+                left: 0;
+            }
+
+            .slider .slider-next-btn {
+                right: 0;
+            }
+
+            /* Fading animation */
+            .fade {
+                -webkit-animation-name: fade;
+                -webkit-animation-duration: 1.5s;
+                animation-name: fade;
+                animation-duration: 1.5s;
+            }
+
+            @-webkit-keyframes fade {
+                from {opacity: .4}
+                to {opacity: 1}
+            }
+
+            @keyframes fade {
+                from {opacity: .4}
+                to {opacity: 1}
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="slider">
+            <img src="https://loremflickr.com/g/1600/300/paris,girl/all?lock=100" />
+            <img src="https://loremflickr.com/g/1600/300/paris,girl/all?lock=101" />
+            <img src="https://loremflickr.com/g/1600/300/paris,girl/all?lock=102" />
+            <img src="https://loremflickr.com/g/1600/300/paris,girl/all?lock=103" />
+            <img src="https://loremflickr.com/g/1600/300/paris,girl/all?lock=104" />
+            <button class="slider-prev-btn" onclick="goPrevImage()"><</button>
+            <button class="slider-next-btn" onclick="goNextImage()">></button>
+        </div>
+    </body>
+    <script>
+        let items = document.querySelectorAll('div img');
+        let currentIndex = 0;
+        function scrollImage() {
+            for(let index=0; index < items.length; index = index + 1) {
+                items[index].setAttribute('style', 'display: none');
+                items[index].classList.add('fade');
+            }
+
+            items[currentIndex].setAttribute('style', 'display: block');
+        }
+
+        function goPrevImage() {
+            if(currentIndex == 0) {
+                currentIndex = items.length-1;
+            } else {
+                currentIndex = currentIndex-1;
+            }
+            scrollImage();
+        }
+
+        function goNextImage() {
+            if(currentIndex == items.length-1) {
+                currentIndex = 0;
+            } else {
+                currentIndex = currentIndex+1;
+            }
+            scrollImage();
+        }
+
+        scrollImage();
+    </script>
+</html>
