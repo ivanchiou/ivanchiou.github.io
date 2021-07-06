@@ -1,0 +1,32 @@
+{
+  "cars": [
+    {
+      "name": "Mazda",
+      "color": "blue",
+      "description": "amazing",
+      "price": "80000",
+      "image_link": "https://loremflickr.com/300/240/car?lock=1"
+    },
+    {
+      "name": "March",
+      "color": "red",
+      "description": "lovely",
+      "price": "20000",
+      "image_link": "https://loremflickr.com/300/240/car?lock=2"
+    },
+    {
+      "name": "Subaru",
+      "color": "yellow",
+      "description": "small",
+      "price": "50000",
+      "image_link": "https://loremflickr.com/300/240/car?lock=3"
+    },
+    {
+      "name": "Benz",
+      "color": "silver",
+      "description": "luxury",
+      "price": "1000000",
+      "image_link": "https://loremflickr.com/300/240/car?lock=4"
+    }
+  ]
+}
