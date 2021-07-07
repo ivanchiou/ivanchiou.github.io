@@ -368,6 +368,7 @@ aside li {
   border-radius: 10px;
   font-size: 20px;
   text-align: center;
+  max-width: 300px;
 }
 
 .item-title {
