@@ -406,6 +406,35 @@ aside li {
   font-size: 16px;
 }
 
+.pagination-division {
+  flex: 100%;
+}
+
+.pagination-element {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.pagination-element li {
+  color: #febd69;
+  border: 1px solid #febd69;
+  border-radius: 5px;
+  padding: 2px 8px;
+  cursor: pointer;
+  margin: 0 1px;
+}
+
+.pagination-element li.active {
+  color: #febd69;
+  background-color: #ff0000;
+  border: 1px solid #febd69;
+}
+
+.pagination-element li:hover {
+  background-color: #eeeeee;
+}
+
 footer {
   text-align: center;
   color: #ffffff;
@@ -418,4 +447,8 @@ footer {
 
 .display-none {
   display: none;
+}
+
+.visible-hidden {
+  visibility: hidden;
 }
