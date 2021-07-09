@@ -406,8 +406,10 @@ aside li {
   font-size: 16px;
 }
 
-.pagination-division {
+.pagination-division, .filter-division {
   flex: 100%;
+  display: flex;
+  justify-content: center;  
 }
 
 .pagination-element {
@@ -417,8 +419,8 @@ aside li {
 }
 
 .pagination-element li {
-  color: #febd69;
-  border: 1px solid #febd69;
+  color: #855210;
+  border: 1px solid #855210;
   border-radius: 5px;
   padding: 2px 8px;
   cursor: pointer;
@@ -428,11 +430,27 @@ aside li {
 .pagination-element li.active {
   color: #febd69;
   background-color: #ff0000;
-  border: 1px solid #febd69;
+  border: 1px solid #855210;
 }
 
 .pagination-element li:hover {
   background-color: #eeeeee;
+}
+
+.filter-element {
+  display: flex;
+  margin: 0 auto;
+  height: 24px;
+  font-size: 14px;
+}
+
+.filter-element span {
+  line-height: 24px;
+}
+
+.filter-element select {
+  border-radius: 5px;
+  width: 100px;
 }
 
 footer {

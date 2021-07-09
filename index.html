@@ -143,18 +143,26 @@
                 image_link: "https://i.pinimg.com/564x/b8/c6/11/b8c611ef29ba0921b17fe2dcb78d4790.jpg"
             }
         ];*/
+        let colorCategorySet = new Set();
 
         let currentPage = 1;
         let totalPage = 0;
         let totalItems = [];
-        const numbersOfPage = 9;
+        let currentColorFilter = "All";
+        const numbersOfItemsInOnePage = 6;
         const items_layout = document.querySelector('#items-layout');
 
         function renderItems(items) {
-            totalPage = Math.floor((items.length + 1) / 9) + 1;
-            renderPagination();
-            
-            const itemsOfPage = items.slice(numbersOfPage*(currentPage-1), (numbersOfPage*currentPage))
+            items_layout.innerHTML = '<div id="filter-division" class="filter-division"></div>'
+            totalPage = Math.floor((items.length-1) / numbersOfItemsInOnePage) + 1
+            items.forEach((item)=>{
+                colorCategorySet.add(item.color);
+            })
+
+            const itemsOfPage = items.slice(numbersOfItemsInOnePage*(currentPage-1), numbersOfItemsInOnePage*currentPage);
+
+            renderPagination()
+
             itemsOfPage.forEach(function (item) {
                 let item_html = "";
                 item_html += '<div class="item">';
@@ -171,6 +179,7 @@
                 items_layout.innerHTML += item_html;
             })
 
+            renderDataFilter()
             renderPagination()
 
             const elements = document.getElementsByClassName("item");
@@ -183,27 +192,53 @@
 
         function rerenderItemsByPage(page){
             currentPage = page;
-            items_layout.innerHTML = "";
             renderItems(totalItems);
         }
 
-        function renderPagination() {
-            let number_array = new Array(totalPage);
-            for (let index=0; index<number_array.length; index++) {
-                number_array[index] = index+1;
-            }
+        function renderPagination(elementID="none") {
             items_layout.innerHTML += 
-                        `<div class="pagination-division">
+                        `<div id="${elementID}" class="pagination-division">
                             <ul class="pagination-element">
                                 <li ${currentPage === 1 ? 'class="visible-hidden"': `onclick="rerenderItemsByPage(1)"`}><<</li>
                                 <li ${currentPage === 1 ? 'class="visible-hidden"': `onclick="rerenderItemsByPage(${currentPage-1})"`} ><</li>
-                                ${ number_array.reduce((accumulator, currentValue, currentIndex)=> {
-                                    return accumulator += `<li ${(currentPage === (currentIndex+1)) ? 'class="active"':  `onclick="rerenderItemsByPage(${currentIndex+1})"`} >${currentValue}</li>`
-                                }, "")}
+                                ${renderNumbersListOfPagination() }
                                 <li ${currentPage === totalPage ? 'class="visible-hidden"': `onclick="rerenderItemsByPage(${currentPage+1})"`} >></li>
                                 <li ${currentPage === totalPage ? 'class="visible-hidden"': `onclick="rerenderItemsByPage(${totalPage})"`} >>></li>
                             </ul>
                         </div>`
+        }
+
+        function renderNumbersListOfPagination () {
+            let number_array = new Array(totalPage);
+            for (let index=0; index<number_array.length; index++) {
+                number_array[index] = index+1;
+            }
+            return number_array.reduce((accumulator, currentValue, currentIndex)=> {
+                return accumulator += `<li ${(currentPage === (currentIndex+1)) ? 'class="active"':  `onclick="rerenderItemsByPage(${currentIndex+1})"`} >${currentValue}</li>`
+            }, "")
+        }
+
+        function rerenderItemsByColorFilter(color) {
+            currentColorFilter = color;
+            let filterItems = (currentColorFilter === "All") ? totalItems : totalItems.filter((item)=>{
+                return item.color === color;
+            })
+            renderItems(filterItems);
+        }
+
+        function renderDataFilter() {
+            const colorCategoryArray = Array.from(colorCategorySet)
+            items_layout.innerHTML +=
+                `<div id="filter-element" class="filter-element">
+                    <span>Color:</span>
+                    <select onchange="rerenderItemsByColorFilter(this.options[this.selectedIndex].value);">
+                        <option value="All">All</option>
+                        ${ colorCategoryArray.reduce((accumulator, currentValue, currentIndex)=>{
+                            return accumulator += `<option value="${currentValue}" ${currentColorFilter === currentValue ? "selected":""}>${currentValue}</option>`
+                        }, "")}
+                    </select>
+                </div>`
+            document.getElementById('filter-division').appendChild(document.getElementById('filter-element'));
         }
 
         function readCSVFile(file) {
