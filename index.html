@@ -161,7 +161,7 @@
 
             const itemsOfPage = items.slice(numbersOfItemsInOnePage*(currentPage-1), numbersOfItemsInOnePage*currentPage);
 
-            renderPagination()
+            renderPagination("first-paginaion")
 
             itemsOfPage.forEach(function (item) {
                 let item_html = "";
@@ -199,11 +199,11 @@
             items_layout.innerHTML += 
                         `<div id="${elementID}" class="pagination-division">
                             <ul class="pagination-element">
-                                <li ${currentPage === 1 ? 'class="visible-hidden"': `onclick="rerenderItemsByPage(1)"`}><<</li>
-                                <li ${currentPage === 1 ? 'class="visible-hidden"': `onclick="rerenderItemsByPage(${currentPage-1})"`} ><</li>
+                                <li ${currentPage === 1 ? '': `onclick="rerenderItemsByPage(1)"`}><<</li>
+                                <li ${currentPage === 1 ? '': `onclick="rerenderItemsByPage(${currentPage-1})"`} ><</li>
                                 ${renderNumbersListOfPagination() }
-                                <li ${currentPage === totalPage ? 'class="visible-hidden"': `onclick="rerenderItemsByPage(${currentPage+1})"`} >></li>
-                                <li ${currentPage === totalPage ? 'class="visible-hidden"': `onclick="rerenderItemsByPage(${totalPage})"`} >>></li>
+                                <li ${currentPage === totalPage ? '': `onclick="rerenderItemsByPage(${currentPage+1})"`} >></li>
+                                <li ${currentPage === totalPage ? '': `onclick="rerenderItemsByPage(${totalPage})"`} >>></li>
                             </ul>
                         </div>`
         }
@@ -213,8 +213,8 @@
             for (let index=0; index<number_array.length; index++) {
                 number_array[index] = index+1;
             }
-            return number_array.reduce((accumulator, currentValue, currentIndex)=> {
-                return accumulator += `<li ${(currentPage === (currentIndex+1)) ? 'class="active"':  `onclick="rerenderItemsByPage(${currentIndex+1})"`} >${currentValue}</li>`
+            return number_array.reduce((accumulator, currentValue)=> {
+                return accumulator += `<li ${(currentPage === currentValue) ? 'class="active"':  `onclick="rerenderItemsByPage(${currentValue})"`} >${currentValue}</li>`
             }, "")
         }
 
@@ -223,6 +223,7 @@
             let filterItems = (currentColorFilter === "All") ? totalItems : totalItems.filter((item)=>{
                 return item.color === color;
             })
+            currentPage = 1;
             renderItems(filterItems);
         }
 
