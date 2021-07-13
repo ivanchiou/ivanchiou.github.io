@@ -21,7 +21,7 @@
                     </div>
                 </form>
                 <p>
-                    <a href="mailto:ivan.chiou@nevisrelaymarathon.com">Contact Me<span class="material-icons">mail</span>
+                    <a href="contact.html">Contact Me<span class="material-icons">mail</span>
                     </a>
                 </p>
             </div>
@@ -210,7 +210,7 @@
 
         function renderNumbersListOfPagination () {
             let number_array = new Array(totalPage);
-            for (let index=0; index<number_array.length; index++) {
+            for (let index=0; index<totalPage; index++) {
                 number_array[index] = index+1;
             }
             return number_array.reduce((accumulator, currentValue)=> {
