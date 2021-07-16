@@ -55,6 +55,10 @@ header .logo-section {
   margin: 0 10px;
 }
 
+header .logo-section p {
+  margin: auto 0;
+}
+
 header form {
   flex: 1;
   display: flex;
@@ -105,8 +109,12 @@ header .logo-section a:link {
   text-decoration: none;
 }
 
+header .logo-section a:visited {
+  color: #ffffff;
+}
+
 nav {
-  height: 25px;
+  height: 45px;
   background-color: #232f3e;
   color: #ffffff;
 }

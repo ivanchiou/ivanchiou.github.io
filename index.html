@@ -4,75 +4,15 @@
         <title>Ivan's Personal Website</title>
         <link rel="stylesheet" href="css/style.css">
         <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">        
         <script defer src="js/script.min.js"></script>
+        <script defer src="js/script_index.min.js"></script>
     </head>
     <body>
         <header>
-            <div class="logo-section">
-                <a href="index.html"><img src="images/pineapple_bun.png"/></a>
-                <p>Hello! St. Kitts and Nevis</p>
-                <form>
-                    <input type="search" name="search" placeholder="Search"/>
-                    <input type="submit" value="search" class="material-icons"/>
-                    <div class="search-autocomplete display-none">
-                        <ul>
-                            <li>suggestion keyword</li>
-                        </ul>
-                    </div>
-                </form>
-                <p>
-                    <a href="contact.html">Contact Me<span class="material-icons">mail</span>
-                    </a>
-                </p>
-            </div>
         </header>
         <nav>
-            <ul>
-                <li class="btn-main">
-                    <a href="index.html">Home</a>
-                </li>
-                <li class="btn-main" onmouseover="mouseover_on_nav_item(this)" onmouseout="mouseout_on_nav_item(this)">
-                    <a href="team.html">Our team</a>
-                    <div class="nav-submenu" onmouseover="mouseover_on_nav_item(this)">
-                        <ul>
-                            <li>
-                                <span class="material-icons-outlined">person</span>
-                                <a href="#">Ivan one</a>
-                            </li>
-                            <li>
-                                <span class="material-icons-outlined">person</span>
-                                <a href="#">Ivan two</a>
-                            </li>
-                            <li>
-                                <span class="material-icons-outlined">person</span>
-                                <a href="#">Ivan three</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="btn-main" onmouseover="mouseover_on_nav_item(this)" onmouseout="mouseout_on_nav_item(this)">
-                    <a href="#">Projects</a>
-                    <div class="nav-submenu" onmouseover="mouseover_on_nav_item(this)">
-                        <ul>
-                            <li>
-                                <span class="material-icons-outlined">task</span>
-                                <a href="http://www.nevisrelaymarathon.com/">Nevis Relay Marathon</a>
-                            </li>
-                            <li>
-                                <span class="material-icons-outlined">task</span>
-                                <a href="https://opendata.foreign.gov.kn/free-virtual-programming-class/">Free Virtual Programming Class</a>
-                            </li>
-                            <li>
-                                <span class="material-icons-outlined">task</span>
-                                <a href="project.html">EAT Local Competition</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="btn-main">
-                    <a href="about.html">About</a>
-                </li>
-            </ul>
         </nav>
         <main>
             <div class="main-image slider">
@@ -112,37 +52,9 @@
             </div>
         </main>
         <footer>
-            <p>©Copyright 2021 by Ivan. All rights reversed.</p>
         </footer>
     </body>
     <script>
-        /*const cars = [
-            {
-                name: "Mazda",
-                color: "blue",
-                description: "amazing",
-                price: 80000,
-                image_link: "https://i.pinimg.com/474x/a5/08/2d/a5082d1d26099cc78ee6d14e9020367e.jpg"
-            }, {
-                name: "March",
-                color: "red",
-                description: "lovely",
-                price: 80000,
-                image_link: "https://i.pinimg.com/564x/8c/b5/ef/8cb5ef11ad76aa6d500ce993a8afaf97.jpg"
-            }, {
-                name: "Subaru",
-                color: "yellow",
-                description: "small",
-                price: 50000,
-                image_link: "https://www.carsensor.net/contents/article_images/_64552/SSP_1.jpg"
-            }, {
-                name: "Benz",
-                color: "silvers",
-                description: "luxury",
-                price: "1000000",
-                image_link: "https://i.pinimg.com/564x/b8/c6/11/b8c611ef29ba0921b17fe2dcb78d4790.jpg"
-            }
-        ];*/
         let colorCategorySet = new Set();
 
         let currentPage = 1;
@@ -276,8 +188,6 @@
             });
         }
 
-        //renderItems(cars);
-        //readCSVFile("seeders/data.csv");
         readJSONFile("seeders/data.json");
     </script>
 </html>

@@ -10,98 +10,34 @@
     </head>
     <body>
         <header>
-            <div class="logo-section">
-                <a href="index.html"><img src="images/pineapple_bun.png"/></a>
-                <p>Hello! St. Kitts and Nevis</p>
-                <form>
-                    <input type="search" name="search" placeholder="Search"/>
-                    <input type="submit" value="search" class="material-icons"/>
-                    <div class="search-autocomplete display-none">
-                        <ul>
-                            <li>suggestion keyword</li>
-                        </ul>
-                    </div>
-                </form>
-                <p>
-                    <a href="contact.html">Contact Me<span class="material-icons">mail</span>
-                    </a>
-                </p>
-            </div>
         </header>
-        <nav style="height: 45px;">
-            <ul>
-                <li class="btn-main">
-                    <a href="index.html">Home</a>
-                </li>
-                <li class="btn-main" onmouseover="mouseover_on_nav_item(this)" onmouseout="mouseout_on_nav_item(this)">
-                    <a href="team.html">Our team</a>
-                    <div class="nav-submenu" onmouseover="mouseover_on_nav_item(this)">
-                        <ul>
-                            <li>
-                                <span class="material-icons-outlined">person</span>
-                                <a href="#">Ivan one</a>
-                            </li>
-                            <li>
-                                <span class="material-icons-outlined">person</span>
-                                <a href="#">Ivan two</a>
-                            </li>
-                            <li>
-                                <span class="material-icons-outlined">person</span>
-                                <a href="#">Ivan three</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="btn-main" onmouseover="mouseover_on_nav_item(this)" onmouseout="mouseout_on_nav_item(this)">
-                    <a href="#">Projects</a>
-                    <div class="nav-submenu" onmouseover="mouseover_on_nav_item(this)">
-                        <ul>
-                            <li>
-                                <span class="material-icons-outlined">task</span>
-                                <a href="http://www.nevisrelaymarathon.com/">Nevis Relay Marathon</a>
-                            </li>
-                            <li>
-                                <span class="material-icons-outlined">task</span>
-                                <a href="https://opendata.foreign.gov.kn/free-virtual-programming-class/">Free Virtual Programming Class</a>
-                            </li>
-                            <li>
-                                <span class="material-icons-outlined">task</span>
-                                <a href="project.html">EAT Local Competition</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="btn-main">
-                    <a href="about.html">About</a>
-                </li>
-            </ul>
+        <nav>
         </nav>
         <main>
             <div class="main-content">
                 <section>
-                    <form class="flex-fill d-flex flex-column align-items-center" style="height: 200px;">
+                    <form id="contact-form" action="https://contactyou-823cb-default-rtdb.firebaseio.com/.json" method="post" class="flex-fill d-flex flex-column align-items-center">
                         <div class="form-group col-md-6 p-2">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control form-control-lg" id="name" placeholder="Enter Name">
+                            <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Enter Name" maxlength=20 required>
                         </div>
                         <div class="form-group col-md-6 p-2">
                             <label for="email">Email</label>
-                            <input type="email" class="form-control form-control-lg" id="email" placeholder="Enter Email">
+                            <input type="email" class="form-control form-control-lg" id="email" placeholder="Enter Email" maxlength=50 required>
                         </div>            
                         <div class="form-group col-md-6 p-2">
                             <label for="message">Massage</label>
-                            <textarea class="form-control form-control-lg" id="message" placeholder="Enter Massage" rows="4"></textarea>
+                            <textarea class="form-control form-control-lg" id="message" name="message" placeholder="Enter Massage" rows="4" maxlength=200 required></textarea>
                         </div>
                         <button type="submit" class="col-md-3 btn btn-primary">Submit</button>
                     </form>
                 </section>
                 <aside>
-                    <div id="message-history">Message History</div>
+                    <div id="message-history" class="mx-auto">Message History</div>
                 </aside>
             </div>
         </main>
         <footer>
-            <p>©Copyright 2021 by Ivan. All rights reversed.</p>
         </footer>
     </body>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
@@ -144,8 +80,7 @@
                 firebase.database().ref('test/'+data.name).set(data,function(error) {
                     if (error) {
                         console.log({error});
-                    } else {                           
-                        alert("success");
+                    } else {
                         location.reload();
                     }
                 });
