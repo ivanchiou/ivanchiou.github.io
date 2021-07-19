@@ -1,5 +1,19 @@
 # ivanchiou.github.io
-## This is my personal page
-###### Let's talk this page I will show you...
-- edit local
-- anything
+## This is my first personal website.
+### The website structure:
+- Home
+- Team Members
+- Projects
+- About
+
+<p align="center">
+  <img src="images/website_preview.png">
+</p>
+
+### Git commands I used:
+```
+git clone https://github.com/username/repository-name
+git add .
+git commit -m "description"
+git push
+```
