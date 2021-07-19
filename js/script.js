@@ -26,3 +26,10 @@ function mouseout_on_nav_item(item) {
 
 $("nav").load("layout/nav.html");
 $("footer").load("layout/footer.html");
+
+
+/*fetch('layout/nav.html')
+  .then(response => response.text())
+  .then(data => {
+  	document.querySelector("nav").innerHTML = data;
+  });*/
