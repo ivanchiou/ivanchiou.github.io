@@ -15,7 +15,7 @@
         <nav>
         </nav>
         <main>
-            <div class="main-content">
+            <div class="main-content flex-column flex-sm-row">
                 <section>
                     <form id="contact-form" action="https://contactyou-823cb-default-rtdb.firebaseio.com/.json" method="post" class="flex-fill d-flex flex-column align-items-center">
                         <img src="/images/pineapple_bun.png">
@@ -95,6 +95,7 @@
             null,
                 function (res) {
                     $('aside div').html('Message History');
+                    $('aside div').removeClass( "d-none d-sm-block" );
                     Object.keys(res.test).forEach((key, index)=>{
                         res.test[key] && $('aside div').append(
                             `
