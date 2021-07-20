@@ -5,6 +5,7 @@
 - Team Members
 - Projects
 - About
+- more words
 
 <p align="center">
   <img src="images/website_preview.png">
