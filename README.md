@@ -4,8 +4,7 @@
 - Home
 - Team Members
 - Projects
-- About
-- more words
+- More items
 
 <p align="center">
   <img src="images/website_preview.png">
