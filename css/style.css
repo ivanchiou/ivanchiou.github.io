@@ -349,8 +349,14 @@ section {
 }
 
 aside {
-  flex: 1;
+  flex: 3;
+  padding: 0px;
+}
+
+aside div {
   background-color: #febd69;
+  padding: 10px;
+  height: 100%;
 }
 
 aside li {

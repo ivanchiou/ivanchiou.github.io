@@ -25,6 +25,7 @@ function mouseout_on_nav_item(item) {
 }
 
 $("nav").load("layout/nav.html");
+$("aside").load("layout/aside.html");
 $("footer").load("layout/footer.html");
 
 

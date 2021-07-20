@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>Ivan's Personal Website</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
         <link rel="stylesheet" href="css/style.min.css">
         <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -34,7 +35,6 @@
                     </form>
                 </section>
                 <aside>
-                    <div id="message-history" class="mx-auto">Message History</div>
                 </aside>
             </div>
         </main>
@@ -90,17 +90,20 @@
             }
         });
 
-        $( document ).ready(function() {
+        $(document).ready(function() {
             $.get('https://contact-form-ed774-default-rtdb.firebaseio.com/.json',
             null,
                 function (res) {
+                    $('aside div').html('Message History');
                     Object.keys(res.test).forEach((key, index)=>{
-                        res.test[key] && $('#message-history').append(
-                            `<hr>
+                        res.test[key] && $('aside div').append(
+                            `
+                            <hr>
                             <ul class="list-group text-decoration-none">
                                 <li class="list-group-item fs-4 border-0"><a class=" text-decoration-none" href="mailto:${res.test[key].email}">${res.test[key].name}</a></li>
                                 <li class="list-group-item border border-secondary rounded">${res.test[key].message}</li>
-                            </ul>`
+                            </ul>
+                            `
                         )
                     })
                 }
