@@ -6,8 +6,9 @@
 - Projects
 - More items
 
+
 <p align="center">
-  <img src="images/website_preview.png">
+  <img src="images/website_preview.png" alt="website-preview">
 </p>
 
 ### Git commands I used:
