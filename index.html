@@ -205,7 +205,7 @@
         readJSONFile("seeders/data.json");
 
         $(document).ready(function() {
-            if($.cookie("name") === null) {
+            if(!$.cookie("name") || $.cookie("name") === null) {
                 let name = prompt("What is your name?", "Type your name here");
                 $.cookie("name", name);
             }
