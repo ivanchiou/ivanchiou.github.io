@@ -12,6 +12,8 @@ $("header").load("layout/header.html", function(){
   searchInputBox.onblur = function () {
     searchAutoCompleteBox.setAttribute("style", "display:none");
   };
+
+  $.cookie("name") && $('#contact').attr("href", `contact.html?name=${$.cookie("name")}`);
 })
 
 function mouseover_on_nav_item(item) {
