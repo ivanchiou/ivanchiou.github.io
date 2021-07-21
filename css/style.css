@@ -101,7 +101,13 @@ input[type="submit"] {
 
 header .logo-section .material-icons {
   vertical-align: text-top;
-  font-size: 16px;
+  font-size: 30px;
+}
+
+@media only screen and (min-width: 576px) {
+  header .logo-section .material-icons {
+    font-size: 18px;
+  }
 }
 
 header .logo-section a:link {
@@ -366,7 +372,6 @@ aside li {
 .items-layout {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-;
 }
 
 .item:hover {
@@ -424,6 +429,10 @@ aside li {
   flex: 100%;
   display: flex;
   justify-content: center;  
+}
+
+.filter-division {
+  margin-bottom: 10px;
 }
 
 .pagination-element {
