@@ -233,12 +233,19 @@
         }
 
         function readJSONFile(file) {
-            fetch(file).then(response => {
+            /*fetch(file).then(response => {
                 return response.json();
             }).then(data => {
                 totalItems = data.items;
                 renderItems(totalItems);
-            });
+            });*/
+            $.get('https://contact-form-ed774-default-rtdb.firebaseio.com/items/.json',
+            null,
+                function (res) {
+                    totalItems = Object.values(res);
+                    renderItems(totalItems);
+                }
+            );
         }
 
         readJSONFile("seeders/data.json");
