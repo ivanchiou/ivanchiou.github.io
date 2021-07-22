@@ -108,7 +108,7 @@
                                 <li class="list-group-item fs-4 border-0">
                                     <a class=" text-decoration-none" href="mailto:${res[key].email}">${res[key].name}</a>
                                     ${
-                                        res[key].uid === $.cookie('uid') ? `<button class="material-icons-outlined border-0 bg-transparent" onclick="deleteMessage(this)" data-name="${key}">delete_forever
+                                        res[key].uid !== undefined && res[key].uid === $.cookie('uid') ? `<button class="material-icons-outlined border-0 bg-transparent" onclick="deleteMessage(this)" data-name="${key}">delete_forever
                                         </button>` : ``
                                     }
                                 </li>
