@@ -32,18 +32,21 @@
         <div class="modal-body">
             <form class="modal-form flex-fill d-flex flex-column align-items-center" role="form" method="POST">
                 <input type="hidden" name="_token" value="">
-                <div class="form-group col-6">
-                    <label class="control-label">E-Mail Address</label>
-                    <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Enter Email">
+                <div class="form-group col-6 email-group">
+                    <label class="control-label" for="email">E-Mail Address</label>
+                    <input type="email" class="form-control form-control-lg" id="email" name="email" placeholder="Enter Email" required>
                 </div>
-                <div class="form-group col-6">
-                    <label class="control-label">Password</label>
-                    <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Enter Password">
+                <div class="form-group col-6 password-group">
+                    <label class="control-label" for="password">Password</label>
+                    <input type="password" class="form-control form-control-lg" id="password" name="password" placeholder="Enter Password" required>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-6 submit-group">
                     <button type="submit" class="btn btn-success mt-4 col-12">Login</button>
                 </div>
             </form>
+            <p class="modal-notice text-center">
+                Do you have account? <a href="javascript:void(0)" onclick="showSignUpForm()">Sign up</a> here!
+            </p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -54,23 +57,84 @@
 
   <script>
       if($.cookie("name") && $.cookie("name") !== null) {
-        $('#login-or-user-info').html(`<span class="material-icons-outlined">account_circle</span>`);
+        changeToUserInfoIcon();
       }
 
-      var loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+      function changeToUserInfoIcon() {
+        $('#login-or-user-info').html(`<a href="javascript:void(0)" onclick="logout()"><span class="material-icons-outlined">face</span></a>`);
+      }
+
+      const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
       $('.modal-form').on('submit', function(){
           event.preventDefault();
-          firebase.auth().signInWithEmailAndPassword($('.modal-form #email').val(), $('.modal-form #password').val())
+          
+          if($('.modal-dialog .modal-title').text() === "LOGIN") {
+             firebase.auth().signInWithEmailAndPassword($('.modal-form #email').val(), $('.modal-form #password').val())
             .then((userCredential) => {
                 console.log(userCredential);
                 loginModal.hide();
-                $.cookie("name", userCredential.user.email);
-                $('#login-or-user-info').html(`<span class="material-icons-outlined">account_circle</span>`);
+                $.cookie("name", userCredential.user.displayName ? userCredential.user.displayName : userCredential.user.email);
+                $('#contact').attr("href", `contact.html?name=${$.cookie("name")}`);
+                changeToUserInfoIcon();
             })
             .catch((error) => {
                 console.log(error);
                 alert('login failed!');
                 loginModal.hide();
+            }); 
+          } else {
+            if($('.modal-form #password').val() !== $('.modal-form #confirm-password').val()){
+                return alert('password and confirm password is not the same');
+            }
+            firebase.auth().createUserWithEmailAndPassword($('.modal-form #email').val(), $('.modal-form #password').val())
+            .then(function(result) {
+                alert('Sign up succeeded! Please sign in again!');
+                loginModal.hide();
+                return result.user.updateProfile({
+                    displayName: $('.modal-form #name').val()
+                })
+            }).catch(function(error) {
+                console.log(error);
+                alert('Sign up failed!');
+                loginModal.hide();
             });
+          }
       })
+
+      function showSignUpForm(){
+        $('.modal-dialog .modal-title').text('CREATE ACCOUNT');
+
+        $(`<div class="form-group col-6 name-group">
+          <label class="control-label" for="name">Name</label>
+          <input type="text" class="form-control form-control-lg" id="name" name="name" placeholder="Enter Name" required>
+        </div>`).insertBefore( ".modal-dialog .email-group" );
+
+        $(`<div class="form-group col-6 confirm-password-group">
+          <label class="control-label" for="confirm-password">Confirm Password</label>
+          <input type="password" class="form-control form-control-lg" id="confirm-password" name="confirm-password" placeholder="Enter Password Again" required>
+        </div>`).insertAfter( ".modal-dialog .password-group" );
+
+        $('.modal-dialog .submit-group button').text('Create Account');
+        $('.modal-dialog .modal-notice').html(`Back to <a href="javascript:void(0)" onclick="showSignInForm()">Sign in</a>`)
+      }
+
+      function showSignInForm() {
+        $('.modal-dialog .modal-title').text('LOGIN');
+        $('.modal-dialog .name-group').remove();
+        $('.modal-dialog .confirm-password-group').remove();
+        $('.modal-dialog .submit-group button').text('Login');
+        $('.modal-dialog .modal-notice').html(`Do you have account? <a href="javascript:void(0)" onclick="showSignUpForm()">Sign up</a> here!`)
+      }
+
+      function logout() {
+        let isLogout = confirm("Are you sure you want to logout?");
+        isLogout &&
+            firebase.auth().signOut().then(() => {
+                $.removeCookie("name");
+                location.reload();
+            }).catch((error) => {
+                console.log(error);
+                alert('Logout failed!');
+            });
+      }
   </script>

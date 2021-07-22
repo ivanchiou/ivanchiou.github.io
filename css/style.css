@@ -483,6 +483,10 @@ aside li {
   width: 100px;
 }
 
+.modal-dialog {
+  color: #000000;
+}
+
 .modal-dialog label {
   color: #000000;
   font-size: 14px;
