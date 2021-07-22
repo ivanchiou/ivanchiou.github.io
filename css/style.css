@@ -99,7 +99,7 @@ input[type="submit"] {
   height: 30px;
 }
 
-header .logo-section .material-icons {
+header .logo-section .material-icons, header .logo-section .material-icons-outlined {
   vertical-align: text-top;
   font-size: 30px;
 }
@@ -117,6 +117,13 @@ header .logo-section a:link {
 
 header .logo-section a:visited {
   color: #ffffff;
+}
+
+header .btn-login {
+  font-size: 12px;
+  background-color: transparent;
+  border: none;
+  margin: 5px;
 }
 
 nav {
@@ -474,6 +481,11 @@ aside li {
 .filter-element select {
   border-radius: 5px;
   width: 100px;
+}
+
+.modal-dialog label {
+  color: #000000;
+  font-size: 14px;
 }
 
 footer {
