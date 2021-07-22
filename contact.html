@@ -78,7 +78,8 @@
             let data = {
                 name: $(this).find('#name').val(),
                 email: $(this).find('#email').val(),
-                message: $(this).find('#message').val()
+                message: $(this).find('#message').val(),
+                uid: $.cookie("uid")
             }
             if(data.name && data.message) {
                 firebase.database().ref('test').push(data,function(error) {
@@ -94,18 +95,24 @@
         });
 
         $(document).ready(function() {
-            $.get('https://contact-form-ed774-default-rtdb.firebaseio.com/.json',
+            $.get('https://contact-form-ed774-default-rtdb.firebaseio.com/test/.json',
             null,
                 function (res) {
                     $('aside div').html('Message History');
                     $('aside div').removeClass( "d-none d-sm-block" );
-                    Object.keys(res.test).forEach((key, index)=>{
-                        res.test[key] && $('aside div').append(
+                    Object.keys(res).forEach((key, index)=>{
+                        res[key] && $('aside div').append(
                             `
                             <hr>
                             <ul class="list-group text-decoration-none">
-                                <li class="list-group-item fs-4 border-0"><a class=" text-decoration-none" href="mailto:${res.test[key].email}">${res.test[key].name}</a></li>
-                                <li class="list-group-item border border-secondary rounded">${res.test[key].message}</li>
+                                <li class="list-group-item fs-4 border-0">
+                                    <a class=" text-decoration-none" href="mailto:${res[key].email}">${res[key].name}</a>
+                                    ${
+                                        res[key].uid === $.cookie('uid') ? `<button class="material-icons-outlined border-0 bg-transparent" onclick="deleteMessage(this)" data-name="${key}">delete_forever
+                                        </button>` : ``
+                                    }
+                                </li>
+                                <li class="list-group-item border border-secondary rounded">${res[key].message}</li>
                             </ul>
                             `
                         )
@@ -116,7 +123,21 @@
 
             //var urlParams = new URLSearchParams(window.location.search);
             //const name = urlParams.get("name")
-            $('#name').val($.cookie('name'));
+            $('#name').val($.cookie('user_name'));
+            $('#email').val($.cookie('user_email'));
         });
+
+        function deleteMessage(element){
+            let isExecuted = confirm("Are you sure to remove the data?");
+            if(isExecuted) {
+                firebase.database().ref('test/'+element.dataset.name).remove().then(function() {
+                    console.log("Remove succeeded.")
+                    location.reload();
+                })
+                .catch(function(error) {
+                    console.log("Remove failed: " + error.message)
+                });
+            }
+        }
     </script>    
 </html>
