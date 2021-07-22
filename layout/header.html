@@ -76,8 +76,7 @@
                 $.cookie("user_name", userCredential.user.displayName ? userCredential.user.displayName : userCredential.user.email);
                 $.cookie("user_email", userCredential.user.email);
                 $.cookie("uid", userCredential.user.uid);
-                $('#contact').attr("href", `contact.html?name=${$.cookie("user_name")}`);
-                changeToUserInfoIcon();
+                location.reload();
             })
             .catch((error) => {
                 console.log(error);
